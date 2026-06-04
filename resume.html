@@ -19,6 +19,9 @@
         padding: 0;
         box-sizing: border-box;
       }
+      html {
+        -webkit-text-size-adjust: 100%; /* ป้องกัน iOS ซูมฟอนต์เอง */
+      }
       body {
         font-family:
           "Inter",
@@ -28,6 +31,7 @@
         color: #242426;
         background-color: #ffffff;
         -webkit-font-smoothing: antialiased;
+        overflow-x: hidden; /* ป้องกันหน้าจอเลื่อนซ้ายขวาบนมือถือ */
       }
 
       /* โครงสร้างหลักแบบ 2 คอลัมน์ */
@@ -43,11 +47,11 @@
       /* คอลัมน์ซ้าย (Sidebar) */
       .sidebar {
         background-color: #f5f5f7;
-        padding: 30px 20px;
+        padding: 25px 20px;
         border-right: 1px solid #e5e7eb;
       }
       .profile-title {
-        margin-bottom: 22px;
+        margin-bottom: 16px;
       }
       .profile-title h1 {
         font-size: 24px;
@@ -60,14 +64,14 @@
         font-size: 12px;
         color: #4f46e5;
         font-weight: 600;
-        margin-top: 6px;
+        margin-top: 4px;
         text-transform: uppercase;
         letter-spacing: 0.5px;
       }
 
       /* คอลัมน์ขวา (Main Content) */
       .main-content {
-        padding: 30px 35px 30px 30px;
+        padding: 25px 30px 25px 25px;
       }
 
       /* หัวข้อหลักประจำเซกชัน */
@@ -79,12 +83,12 @@
         color: #1d1d1f;
         border-bottom: 2px solid #1d1d1f;
         padding-bottom: 4px;
-        margin-bottom: 12px;
+        margin-bottom: 10px;
       }
       .sidebar .section-title {
         color: #4b5563;
         border-bottom: 1px solid #d1d5db;
-        margin-top: 20px;
+        margin-top: 16px;
       }
       .sidebar .section-title:first-of-type {
         margin-top: 0;
@@ -93,8 +97,9 @@
       /* ข้อมูลรายละเอียดใน Sidebar */
       .info-item {
         font-size: 12.5px;
-        margin-bottom: 10px;
+        margin-bottom: 8px;
         line-height: 1.4;
+        word-break: break-word; /* ป้องกันอีเมล/ลิงก์ยาวทะลุขอบ */
       }
       .info-item strong {
         display: block;
@@ -111,7 +116,7 @@
       .skill-list li {
         font-size: 12.5px;
         color: #374151;
-        margin-bottom: 9px;
+        margin-bottom: 7px;
         line-height: 1.35;
       }
       .skill-list li strong {
@@ -124,20 +129,21 @@
       .summary-text {
         font-size: 13px;
         color: #374151;
-        line-height: 1.6;
-        margin-bottom: 20px;
+        line-height: 1.5;
+        margin-bottom: 16px;
         text-align: justify;
       }
 
       .item-block {
-        margin-bottom: 15px;
+        margin-bottom: 12px;
       }
       .item-header {
         display: flex;
         justify-content: space-between;
         align-items: baseline;
         margin-bottom: 4px;
-        flex-wrap: wrap;
+        flex-wrap: wrap; /* ยอมให้ตกบรรทัดถ้ายาวไป */
+        gap: 6px;
       }
       .item-name {
         font-size: 14.5px;
@@ -146,6 +152,7 @@
         display: flex;
         align-items: center;
         gap: 6px;
+        flex-wrap: wrap; /* ปุ่มโปรเจกต์จะตกบรรทัดในจอมือถือ */
       }
       .source-link {
         font-size: 10.5px;
@@ -156,6 +163,7 @@
         padding: 2px 6px;
         border-radius: 4px;
         transition: background-color 0.2s;
+        display: inline-block;
       }
       .source-link:hover {
         background-color: #c7d2fe;
@@ -184,11 +192,13 @@
         color: #4b5563;
       }
       .item-bullets li {
-        margin-bottom: 4px;
-        line-height: 1.5;
+        margin-bottom: 2px;
+        line-height: 1.4;
       }
 
-      /* ตั้งค่าสำหรับพิมพ์ออกเป็น PDF ให้ล็อกหน้ากระดาษ A4 */
+      /* ========================================================
+         ตั้งค่าสำหรับพิมพ์ออกเป็น PDF ให้ล็อกเป็น 2 คอลัมน์หน้าเดียว
+      ======================================================== */
       @media print {
         @page {
           size: A4;
@@ -200,29 +210,60 @@
           print-color-adjust: exact;
         }
         .resume-wrapper {
-          width: 100vw;
-          height: 100vh;
+          width: 100%;
+          height: auto;
+          display: grid !important;
+          grid-template-columns: 250px 1fr !important;
         }
         .sidebar {
           background-color: #f5f5f7 !important;
+          border-right: 1px solid #e5e7eb !important;
         }
-        /* สั่งซ่อนปุ่มลิงก์โปรเจกต์ทั้งหมดทันทีเมื่อสั่งปริ้นลงกระดาษ */
         .source-link {
           display: none !important;
+        }
+      }
+
+      /* ========================================================
+         ตั้งค่าสำหรับจอมือถือ (บังคับให้แสดงผลเฉพาะบนหน้าจอ screen เท่านั้น)
+      ======================================================== */
+      @media screen and (max-width: 768px) {
+        .resume-wrapper {
+          grid-template-columns: 1fr;
+        }
+        .sidebar {
+          border-right: none;
+          border-bottom: 1px solid #e5e7eb;
+          padding: 25px 20px;
+        }
+        .main-content {
+          padding: 25px 20px;
+        }
+        
+        /* แก้ปัญหาพื้นที่เบียดกันบนมือถือ */
+        .item-header {
+          flex-direction: column; /* ให้ข้อมูลตกลงมาเรียงบนลงล่าง */
+          align-items: flex-start;
+          gap: 6px;
+        }
+        .item-name {
+          line-height: 1.4;
+        }
+        .item-tag, .item-date {
+          margin-top: 2px;
+          margin-bottom: 6px;
         }
       }
     </style>
   </head>
   <body>
     <div class="resume-wrapper">
-      <!-- ฝั่งซ้าย (Sidebar) -->
       <aside class="sidebar">
         <div class="profile-title">
           <h1>Tanabut<br />Watayakone</h1>
           <p>Student Developer</p>
         </div>
 
-        <!-- หมวดหมู่ติดต่อ -->
         <div class="section-title">Contact</div>
         <div class="info-item">
           <strong>Location</strong>
@@ -241,7 +282,6 @@
           <span>github.com/andbxnk</span>
         </div>
 
-        <!-- หมวดหมู่สกิลความเชี่ยวชาญ -->
         <div class="section-title">Skills</div>
         <ul class="skill-list">
           <li><strong>Mobile App</strong> React Native (Expo), Flutter</li>
@@ -256,7 +296,6 @@
           </li>
         </ul>
 
-        <!-- หมวดหมู่ภาษา -->
         <div class="section-title">Languages</div>
         <ul class="skill-list">
           <li><strong>Thai</strong> Native</li>
@@ -264,9 +303,7 @@
         </ul>
       </aside>
 
-      <!-- ฝั่งขวา (Main Content) -->
       <main class="main-content">
-        <!-- ส่วนประวัติย่อ -->
         <div class="section-title">About Me</div>
         <p class="summary-text">
           นักศึกษาสาขาเทคโนโลยีดิจิทัลและนวัตกรรม มีทักษะความรู้ด้านการพัฒนา
@@ -276,7 +313,6 @@
           กำลังมองหาโอกาสฝึกงานในปี 2026 รูปแบบออนไลน์หรือ WFH
         </p>
 
-        <!-- ส่วนผลงานและประสบการณ์ -->
         <div class="section-title">Projects & Experience</div>
 
         <div class="item-block">
@@ -391,7 +427,6 @@
           </ul>
         </div>
 
-        <!-- ส่วนประวัติการศึกษา -->
         <div class="section-title">Education</div>
 
         <div class="item-block">
