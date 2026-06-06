@@ -69,6 +69,7 @@ body {
     display: flex;
     align-items: center;
     transition: background 0.3s ease;
+    animation: slideDownNav 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .nav-container {
@@ -499,6 +500,18 @@ body {
 
 .toast.error {
     background-color: #ff3b30; 
+}
+
+/* ================= Animation ================= */
+@keyframes slideDownNav {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 /* ================= Responsive Design ================= */
