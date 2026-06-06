@@ -529,7 +529,7 @@ body {
         padding: 12px 1.5rem;
     }
     .navbar { height: auto; padding-bottom: 12px; }
-    body { padding-top: 100px; }
+    body { padding-top: 150px; }
     .nav-links { flex-wrap: wrap; justify-content: center; gap: 12px; }
     .nav-links a { margin-left: 0; font-size: 0.85rem; }
     #theme-toggle { margin-left: 0; }
