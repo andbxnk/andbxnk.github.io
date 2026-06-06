@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="th">
+<html lang="th" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,10 +19,11 @@
       <div class="nav-container">
         <a href="#" class="nav-logo">TW.</a>
         <div class="nav-links">
-          <a href="#about">About</a>
-          <a href="#skills">Skills</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact" class="nav-cta">Contact</a>
+          <a href="#about" class="nav-link">About</a>
+          <a href="#skills" class="nav-link">Skills</a>
+          <a href="#projects" class="nav-link">Projects</a>
+          <a href="#contact" class="nav-link nav-cta">Contact</a>
+          <button id="theme-toggle" aria-label="Toggle Dark Mode">🌙</button>
         </div>
       </div>
     </nav>
@@ -41,7 +42,8 @@
             <div class="hero-actions">
               <a href="#contact" class="btn btn-primary">ติดต่อพูดคุย</a>
               <a href="https://github.com/andbxnk" target="_blank" class="btn btn-secondary">GitHub ของฉัน</a>
-              <a href="resume.html" target="_blank" class="btn btn-secondary">ดูเรซูเม่ (Resume)</a>
+              <a href="tanabut.pdf" download class="btn btn-secondary">โหลดเรซูเม่ (PDF)</a>
+              <a href="https://docs.google.com/viewer?url=https://andbxnk.github.io/tanabut.pdf" target="_blank" class="btn btn-secondary">ดูเรซูเม่ (PDF)</a>
             </div>
           </div>
           <div class="hero-image">
@@ -54,30 +56,49 @@
         <h3 class="section-tag">Education</h3>
         <h2 class="section-title">ประวัติการศึกษา</h2>
         <div class="education-timeline">
+          
           <div class="education-card">
-            <div class="edu-header">
-              <h4>มหาวิทยาลัยเอเชียอาคเนย์ (SAU)</h4>
-              <span class="edu-date status-current">ปัจจุบัน (กำลังศึกษา)</span>
+            <div class="edu-content">
+              <div class="edu-left">
+                <h4>มหาวิทยาลัยเอเชียอาคเนย์ (SAU)</h4>
+                <p class="edu-degree">ปริญญาตรี คณะศิลปศาสตร์และวิทยาศาสตร์</p>
+                <p class="edu-major">สาขาเทคโนโลยีดิจิทัลและนวัตกรรม</p>
+                <span class="edu-date status-current">ปัจจุบัน (กำลังศึกษา)</span>
+              </div>
+              <div class="edu-right">
+                <img src="SAU.png" alt="SAU Logo" class="edu-logo">
+              </div>
             </div>
-            <p class="edu-degree">ปริญญาตรี คณะศิลปศาสตร์และวิทยาศาสตร์</p>
-            <p class="edu-major">สาขาเทคโนโลยีดิจิทัลและนวัตกรรม</p>
           </div>
+
           <div class="education-card">
-            <div class="edu-header">
-              <h4>วิทยาลัยเทคโนโลยีการจัดการเพชรเกษม (PM-TECH)</h4>
-              <span class="edu-date">สำเร็จการศึกษา</span>
+            <div class="edu-content">
+              <div class="edu-left">
+                <h4>วิทยาลัยเทคโนโลยีการจัดการเพชรเกษม (PM-TECH)</h4>
+                <p class="edu-degree">ระดับประกาศนียบัตรวิชาชีพชั้นสูง (ปวส.)</p>
+                <p class="edu-major">สาขาเทคโนโลยีสารสนเทศ</p>
+                <span class="edu-date">สำเร็จการศึกษา</span>
+              </div>
+              <div class="edu-right">
+                <img src="pm-tech.jpg" alt="PM-TECH Logo" class="edu-logo">
+              </div>
             </div>
-            <p class="edu-degree">ระดับประกาศนียบัตรวิชาชีพชั้นสูง (ปวส.)</p>
-            <p class="edu-major">สาขาเทคโนโลยีสารสนเทศ</p>
           </div>
+
           <div class="education-card">
-            <div class="edu-header">
-              <h4>วิทยาลัยเทคโนโลยีการจัดการเพชรเกษม (PM-TECH)</h4>
-              <span class="edu-date">สำเร็จการศึกษา</span>
+            <div class="edu-content">
+              <div class="edu-left">
+                <h4>วิทยาลัยเทคโนโลยีการจัดการเพชรเกษม (PM-TECH)</h4>
+                <p class="edu-degree">ระดับประกาศนียบัตรวิชาชีพ (ปวช.)</p>
+                <p class="edu-major">สาขาเทคโนโลยีสารสนเทศ</p>
+                <span class="edu-date">สำเร็จการศึกษา</span>
+              </div>
+              <div class="edu-right">
+                <img src="pm-tech.jpg" alt="PM-TECH Logo" class="edu-logo">
+              </div>
             </div>
-            <p class="edu-degree">ระดับประกาศนียบัตรวิชาชีพ (ปวช.)</p>
-            <p class="edu-major">สาขาเทคโนโลยีสารสนเทศ</p>
           </div>
+
         </div>
       </section>
 
@@ -143,7 +164,7 @@
         <h2 class="section-title">ช่องทางการติดต่อ</h2>
         <div class="contact-container">
           
-          <form class="contact-form" action="https://formspree.io/f/xvgzpyje" method="POST">
+          <form id="contactForm" class="contact-form" action="https://formspree.io/f/xpqeqkkn" method="POST">
             <div class="form-group">
               <label for="name">ชื่อ-นามสกุล</label>
               <input type="text" id="name" name="name" required placeholder="ใส่ชื่อของคุณ">
@@ -156,7 +177,7 @@
               <label for="message">ข้อความ</label>
               <textarea id="message" name="message" rows="4" required placeholder="พิมพ์ข้อความที่ต้องการติดต่อ..."></textarea>
             </div>
-            <button type="submit" class="btn btn-primary btn-submit">ส่งข้อความ</button>
+            <button type="submit" id="submitBtn" class="btn btn-primary btn-submit">ส่งข้อความ</button>
           </form>
 
           <div class="contact-info">
@@ -174,10 +195,8 @@
               </a>
             </div>
           </div>
-
         </div>
       </section>
-
     </main>
 
     <footer class="footer">
@@ -187,6 +206,8 @@
         <a href="https://github.com/andbxnk" target="_blank">GitHub</a>
       </div>
     </footer>
+
+    <div id="toast" class="toast">ส่งข้อความสำเร็จ!</div>
 
     <script src="script.js"></script>
   </body>
